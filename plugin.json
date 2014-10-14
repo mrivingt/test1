@@ -2,6 +2,6 @@
     "description" : "Gets Cassandra JMX metrics",
 	"command" : "java CassandraJMX $(pollInterval)",
 	"metrics" : ["CAS_FW_PT"],
-	"postExtract" : "" 
+	"postExtract" : "a.bat" 
 }
 
