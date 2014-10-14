@@ -11,17 +11,22 @@
 	
 
 	
-	import java.util.Set;
+	import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Set;
 	
 	
 	
+
+
+
 	import javax.management.MBeanServerConnection;
 	
 	import javax.management.ObjectInstance;
-	import javax.management.ObjectName;
-	import javax.management.remote.JMXConnector;
-	import javax.management.remote.JMXConnectorFactory;
-	import javax.management.remote.JMXServiceURL;
+import javax.management.ObjectName;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
 	
 		public class CassandraJMX {
 
@@ -31,6 +36,18 @@
 	       Real programs will usually want finer-grained exception handling. */
 	    public static void main(String[] args) throws Exception {
 	     
+	    	String hostname = "Unknown";
+
+	    	try
+	    	{
+	    	    InetAddress addr;
+	    	    addr = InetAddress.getLocalHost();
+	    	    hostname = addr.getHostName();
+	    	}
+	    	catch (UnknownHostException ex)
+	    	{
+	    	    System.out.println("Hostname can not be resolved");
+	    	}
 	        
 	        JMXServiceURL serviceURL = new JMXServiceURL(
 	                "service:jmx:rmi:///jndi/rmi://127.0.0.1:7199/jmxrmi");
@@ -39,7 +56,7 @@
 
 	        MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();
 	
-	        String source = "";
+	        String source = hostname;
 	        String searchName, displayName, attributeName;        
 	
 	     
@@ -48,7 +65,7 @@
 	        	searchName = "org.apache.cassandra.internal:type=FlushWriter";
 	        	attributeName = "PendingTasks";  
 	        	displayName = "CAS_FW_PT";
-	        
+	        		        
 	        	getMbean(mbsc, searchName, attributeName, displayName, source);
 	        	
 	        	Thread.sleep(1000);
