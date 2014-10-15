@@ -1,36 +1,18 @@
-
-
-	
-	
-
-	
 	/*
 	 * Initial attempt to get JMX data out of Cassandra. Uses local host port 7199 to connect.
 	 */
-
-	
-
 	
 	import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Set;
-	
-	
-	
-
-
-
+	import java.net.UnknownHostException;
+	import java.util.Set;
 	import javax.management.MBeanServerConnection;
-	
 	import javax.management.ObjectInstance;
-import javax.management.ObjectName;
-import javax.management.remote.JMXConnector;
-import javax.management.remote.JMXConnectorFactory;
-import javax.management.remote.JMXServiceURL;
+	import javax.management.ObjectName;
+	import javax.management.remote.JMXConnector;
+	import javax.management.remote.JMXConnectorFactory;
+	import javax.management.remote.JMXServiceURL;
 	
 		public class CassandraJMX {
-
-	
 
 	    /* For simplicity, we declare "throws Exception".
 	       Real programs will usually want finer-grained exception handling. */
@@ -46,11 +28,11 @@ import javax.management.remote.JMXServiceURL;
 	    	}
 	    	catch (UnknownHostException ex)
 	    	{
-	    	    System.out.println("Hostname can not be resolved");
+	    	    echo("Hostname can not be resolved");
 	    	}
 	        
 	        JMXServiceURL serviceURL = new JMXServiceURL(
-	                "service:jmx:rmi:///jndi/rmi://127.0.0.1:7199/jmxrmi");
+	                "service:jmx:rmi:///jndi/rmi://localhost:7199/jmxrmi");
 	        JMXConnector jmxc = JMXConnectorFactory.connect(serviceURL); 
 
 
@@ -59,8 +41,8 @@ import javax.management.remote.JMXServiceURL;
 	        String source = hostname;
 	        String searchName, displayName, attributeName;        
 	
-	     
-	        for (int i = 0; i == 0; i = i + 1 - 1) {   // Forever
+	        
+	        while (true) {   // Forever
 	        
 	        	searchName = "org.apache.cassandra.internal:type=FlushWriter";
 	        	attributeName = "PendingTasks";  
@@ -69,9 +51,10 @@ import javax.management.remote.JMXServiceURL;
 	        	getMbean(mbsc, searchName, attributeName, displayName, source);
 	        	
 	        	Thread.sleep(1000);
+	        	
 	        }
 
-	        jmxc.close();
+	        // jmxc.close();
 	    }
 	    
 	    private static void getMbean(MBeanServerConnection mbsc, String searchName, String attributeName, 
