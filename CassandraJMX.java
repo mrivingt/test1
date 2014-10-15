@@ -50,6 +50,12 @@
 	        		        
 	        	getMbean(mbsc, searchName, attributeName, displayName, source);
 	        	
+	        	searchName = "org.apache.cassandra.internal:type=FlushWriter";
+	        	attributeName = "CompletedTasks";  
+	        	displayName = "CAS_FW_CT";
+	        		        
+	        	getMbean(mbsc, searchName, attributeName, displayName, source);
+	        	
 	        	Thread.sleep(1000);
 	        	
 	        }
