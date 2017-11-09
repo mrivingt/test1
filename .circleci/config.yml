@@ -5,7 +5,7 @@ jobs:
        - image: mrivingt/testrail
        auth:
        username: mrivingt
-       password: Lexington40
-     steps:
+       password: $DOCKERHUB_PASSWORD
+     - steps:
        - checkout
        - run: echo "hello world"
