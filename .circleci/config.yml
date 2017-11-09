@@ -4,7 +4,7 @@ jobs:
      docker:
        - image: mrivingt/testrail
        auth:
-          username: mrivingt  # can specify string literal values
+          username: "mrivingt"  # can specify string literal values
           password: $DOCKERHUB_PASSWORD  # or project environment variable reference
      steps:
        - checkout
