@@ -9,6 +9,5 @@ docker:
   - steps:
      # ...
      - checkout
-     - run:
-       command: echo "hello world"
+     - run: echo "hello world"
      # ...  
