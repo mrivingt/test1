@@ -7,7 +7,7 @@ jobs:
     #Put the contents of keyfile.json into an environment variable for the build called GCR_CREDS, which is then passed in.
       username: mrivingt
       password: $DOCKERHUB_PASSWORD 
-  - steps:
+    steps:
      # ...
      - checkout
      - run: echo "hello world"
