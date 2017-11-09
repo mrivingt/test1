@@ -3,9 +3,6 @@ jobs:
    build:
      docker:
        - image: mrivingt/testrail
-       auth:
-          username: mrivingt  # can specify string literal values
-          password: $DOCKERHUB_PASSWORD  # or project environment variable reference
      steps:
        - checkout
        - run: echo "hello world"
