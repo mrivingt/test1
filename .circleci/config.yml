@@ -3,7 +3,7 @@ jobs:
    build:
      docker:
        - image: mrivingt/testrail
-       auth:
+       - auth:
        username: mrivingt
        password: $DOCKERHUB_PASSWORD
      steps:
