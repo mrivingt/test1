@@ -3,9 +3,9 @@ jobs:
    build:
      docker:
        - image: mrivingt/testrail
-       - auth:
+       auth:
        username: mrivingt
-       password: $DOCKERHUB_PASSWORD
+       password: Lexington40
      steps:
        - checkout
        - run: echo "hello world"
