@@ -1,4 +1,4 @@
-version 2
+version: 2
 jobs:
 docker: 
   - image: mrivingt/testrail
