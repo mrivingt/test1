@@ -1,11 +1,12 @@
-version: 2
-jobs:
-   build:
-     docker:
-       - image: mrivingt/testrail
-       auth:
-       username: mrivingt
-       password: $DOCKERHUB_PASSWORD
-     - steps:
-       - checkout
-       - run: echo "hello world"
+docker: 
+  - image: mrivingt/testrail
+    auth:
+    #Put the contents of keyfile.json into an environment variable for the build called GCR_CREDS, which is then passed in.
+      username: mrivingt
+      password: $DOCKERHUB_PASSWORD 
+  - steps:
+     # ...
+     - checkout
+     - run:
+       command: echo "hello world"
+     # ...  
