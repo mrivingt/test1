@@ -4,9 +4,8 @@ jobs:
   docker: 
   - image: mrivingt/testrail
     auth:
-      username: mrivingt
-      password: $DOCKERHUB_PASSWORD 
+    username: "mrivingt"
+    password: $DOCKERHUB_PASSWORD 
     steps:
-      - checkout
-      - run: echo "hello world"
-      
+    - checkout
+    - run: echo "hello world"   
